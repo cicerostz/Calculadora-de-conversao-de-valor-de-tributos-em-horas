@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{
+			padding-top: 0px;
+			margin:0px;
+			font-family: arial;
+		}
+		body{
+			/*background-image: url("http://www.deducao.com.br/wp-content/uploads/2016/07/IMPOSTOS-1.png");
+			background-repeat: no-repeat;
+			background-size: cover;*/
+			background-color: #f7f7f7;
+		}
+		.janela{
+			background-color: #eeeeee;
+			border: solid 1px #838280;
+			width:96%;
+			margin: auto;
+			margin-top: 5px;
+			height:150px;
+			padding: 5px;
+			margin-bottom: 10px;
+			border-radius:4px;
+		
+		}
+		.janela input[type="text"]{
+			display: block;
+			width: 150px;
+			height: 20px;
+			border: solid 1px #ccc;
+			font-weight: bold;
+			margin-bottom:10px;
+			
+		}
+		.janela input[type="text"]:focus{
+			background-color: #4F4F4F;
+			color: #00FFFF;
+			border: solid 1px #ccc;
+			outline:0px;
+		}
+		
+		button{
+			display: block;
+			width: 90px;
+			height: 30px;
+			margin-left: 20px;
+			margin-bottom: 15px;
+			border:solid 1px #9c9c9c;
+			background-color: #ccc;
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#ededed),
+			 color-stop(50%,#ededed), color-stop(51%,#d4d4d4), color-stop(100%,#ccc));
+			border-radius: 3px;
+
+		}
+		button:hover{
+			/*text-decoration: underline;*/
+			cursor: pointer;
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(100%,#ededed),
+			 color-stop(50%,#ededed), color-stop(51%,#d4d4d4), color-stop(100%,#ccc));
+		}
+		.mostraValorHora, 
+		.mostraHorasGastas{
+			margin-top:15px;
+		}
+		footer{
+			bottom: 0;
+			position: absolute;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+
+<h3 style="text-align: center;">Cálculo de compensação de tributos</h3>
+
+<div class="janela">
+<form>
+	<label>Salario</label>
+	<input type="text" id="salario"  placeholder="Exemplo: 1500,80" maxlength="8">
+
+	<label>Hora mes</label>
+	<input type="text" id="horasMes" placeholder="Exemplo: 200" maxlength="3">
+	<label>Valor do Imposto</label>
+	<input type="text" id="imposto"  placeholder="Exemplo: 750,54" maxlength="7">
+</form>
+</div>
+
+
+<p>
+<button onclick="calculoComp()">Calcular</button>
+
+
+<div class="janela">
+	<h3>Detalhes do cálculo</h3>
+	<div class="mostraValorHora" id="mostraValorHora">Valor da hora: </div>
+	<div class="mostraHorasGastas" id="mostraHorasGastas">Horas gastas: </div>
+</div>
+
+<footer>Desenvolvido por Cícero Silva</footer>
+
+
+
+
+<script>
+function calculoComp() {
+  if (document.getElementById("salario").value  == "") {
+  		alert("SALÁRIO EM BRANCO")
+
+  }else if(document.getElementById("horasMes").value  == ""){
+  		alert("HORA MÊS EM BRANCO")
+  }else if(document.getElementById("horasMes").value  == ""){
+  		alert("HORA MÊS EM BRANCO")
+  }else if(document.getElementById("imposto").value  == ""){
+  		alert("VALOR DO IMPOSTO EM BRANCO")
+  }else{
+  	var salario 	= document.getElementById("salario").value;
+  	var horasMes 	= document.getElementById("horasMes").value;
+  	var imposto 	= document.getElementById("imposto").value;
+
+  	var valorHora  	= (parseFloat(salario) /  parseFloat(horasMes));
+  	var horasGastas = (parseFloat(imposto) /  parseFloat(valorHora));
+
+  	
+  	var exibirvalorHora	  = document.getElementById("mostraValorHora").innerHTML = "Valor da hora: R$ "+valorHora;
+  	var exibirHorasGastas = document.getElementById("mostraValorHora").innerHTML = "Horas gastas: "+horasGastas;
+
+  	var totalConvertidoexibirvalorHoras = exibirvalorHora.toString().replace(".", ",");
+  	var totalConvertidoexibirHorasGastas = exibirHorasGastas.toString().replace(".", ",");
+
+  	document.getElementById("mostraValorHora").innerHTML 	= totalConvertidoexibirvalorHoras;
+
+
+  	document.getElementById("mostraHorasGastas").innerHTML 	= totalConvertidoexibirHorasGastas;
+
+  	//document.getElementById("salario").style.backgroundColor = "#000";
+  	//document.getElementById("salario").style.color = "#FFF";
+
+
+  }
+  
+}
+</script>
+
+</body>
+</html>
