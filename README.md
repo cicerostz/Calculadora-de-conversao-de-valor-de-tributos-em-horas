@@ -1,4 +1,4 @@
-# Calculadora-de-conversao-de-valor-de-tributos-em-horas ⚙
+# CalculadoraDeTributos ⚙
 Calculadora desenvolvida em javascript puro para a  conversão de valor de tributos em horas trabalhadas
 
 <h3>Pré-requisitos </h3>
